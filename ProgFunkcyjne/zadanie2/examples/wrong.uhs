@@ -1,0 +1,3 @@
+main k = l k
+l x = x x
+t x y = y x

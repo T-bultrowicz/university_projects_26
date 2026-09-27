@@ -1,0 +1,10 @@
+not True = False
+not False = True
+
+and True True = True
+and x y = False
+
+isZero Z = True
+isZero (S x) = False
+
+main = and (not (isZero (S Z))) (isZero Z)

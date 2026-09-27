@@ -1,0 +1,36 @@
+{% extends "game/base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<section id="add-user">
+    <h2>Register account:</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Dodano wyświetlanie błędów nieskierowanych do konkretnego pola (np. niezgodność haseł) -->
+        {% if form.non_field_errors %}
+            <ul class="errorlist">
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% for field in form %}
+        <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Register</button>
+    </form>
+</section>
+
+{% endblock %}

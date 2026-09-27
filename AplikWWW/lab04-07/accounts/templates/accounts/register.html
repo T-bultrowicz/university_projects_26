@@ -1,0 +1,26 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<section id="add-user">
+    <h2>Register account:</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Register</button>
+    </form>
+</section>
+
+{% endblock %}

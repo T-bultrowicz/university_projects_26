@@ -1,0 +1,13 @@
+{% extends "game/base.html" %}
+{% load static %}
+{% block title %} Play {% endblock %}
+
+{% block content %}
+<h1> Find level to play! </h1>
+
+<input type="text" id="search-input" placeholder="Search…" autocomplete="off">
+<p id="status-bar"></p>
+<div id="post-list"></div>
+
+<script src="{% static 'game/js/play_browser.js' %}"></script>
+{% endblock %}

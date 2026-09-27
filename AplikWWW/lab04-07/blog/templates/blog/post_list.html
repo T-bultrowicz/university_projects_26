@@ -1,0 +1,30 @@
+{% extends "pages/base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>
+    {% if active_category %}Posts in: {{ active_category.name }}
+    {% else %}All Posts{% endif %}
+</h1>
+
+<aside>
+    <h3>Categories</h3>
+    <ul>
+        {% for cat in categories %}
+        <li><a href="{% url 'blog:category_posts' cat.slug %}">{{ cat.name }}</a></li>
+        {% endfor %}
+    </ul>
+</aside>
+
+<section>
+    {% for post in posts %}
+    <article>
+        <h2><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h2>
+        <small>{{ post.pub_date|date:"d M Y" }}</small>
+        <p>{{ post.body|truncatewords:30 }}</p>
+    </article>
+    {% empty %}
+    <p>No posts yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

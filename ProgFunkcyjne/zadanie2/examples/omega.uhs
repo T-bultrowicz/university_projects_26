@@ -1,0 +1,3 @@
+om x = x x
+omega = om om
+main = omega

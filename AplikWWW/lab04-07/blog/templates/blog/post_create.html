@@ -1,0 +1,30 @@
+{% extends "pages/base.html" %}
+{% block title %} Create Post {% endblock %}
+
+{% block content %}
+<article>
+    <h1>Create your post via this form:</h1>
+</article>
+
+
+<section id="add-blog-post">
+    <h2> Create Blog Post </h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Create Post</button>
+    </form>
+</section>
+
+<p><a href="{% url 'blog:post_list' %}">← All Posts</a></p>
+{% endblock %}

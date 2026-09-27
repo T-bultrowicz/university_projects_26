@@ -1,0 +1,19 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Guestbook {% endblock %}
+
+{% block content %}
+    <h1> Welcome to guestbook! </h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Your name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="message">Your message:</label>
+        <input type="text" id="message" name="message" required>       
+        <button type="submit">Send</button>
+    </form>
+    <br>
+    <p> You can press below to go back to the main page !! </p>
+    <a href="{% url 'home' %}"> Home </a>
+{% endblock %}

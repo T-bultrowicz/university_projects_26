@@ -1,0 +1,20 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1> Nice to see you dear user {{ user_name }} </h1>
+    <p>The server time is: {{ server_time }}</p>
+    {% if message %} <p>{{ message }}</p> {% endif %}    
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="note">Leave a note:</label>
+        <input type="text" id="note" name="note" required>
+        <button type="submit">Send</button>
+    </form>
+    <br>
+    <p> You can press below to go back to the main page !! </p>
+    <a href="{% url 'home' %}"> Home </a>
+{% endblock %}

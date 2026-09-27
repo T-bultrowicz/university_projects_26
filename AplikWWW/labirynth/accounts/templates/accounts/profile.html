@@ -1,0 +1,32 @@
+{% extends "game/base.html" %}
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+<h1>Profile</h1>
+<p>Welcome {{ user.username }}, this is your profile page!</p>
+<h3> Profile info: </h3>
+<p> <b> Email: </b> {{ user.email }} </p>
+<p> <b> Date joined: </b> {{ user.date_joined|date:"d M Y" }} </p>
+<p> <b> Staff member: </b> {{ user.is_staff }} </p>
+
+<hr>
+
+<h3> Best Scores: </h3>
+<ul class="maze-score-list">
+    {% for maze in mazes %}
+        <li>
+            <!-- Zakładam, że w urls.py w appce game masz: path('play/<str:game_name>/', ..., name='play') -->
+            <a href="{% url 'game:play_game' maze.name %}" class="maze-link">{{ maze.name }}</a>
+            - 
+            {% if maze.best_time %}
+                <strong>{{ maze.best_time|floatformat:3 }}s</strong>
+            {% else %}
+                <span style="color: gray; font-style: italic;">not finished</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No mazes available in the database yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

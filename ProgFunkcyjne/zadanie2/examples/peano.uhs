@@ -1,0 +1,32 @@
+zero f z = z
+one f z = f z
+two = suc one
+tre = suc two
+suc n f z = f(n f z)
+o f g x = f(g x)
+add m n f x = m f (n f x)
+mul m n = o m n
+fyr = add two two
+six = mul two tre
+main = six S Z
+
+------------------------------------------------------------
+{- 
+six S Z
+mul two tre S Z
+o two tre S Z
+two (tre S) Z
+suc one (tre S) Z
+tre S (one (tre S) Z)
+suc two S (one (tre S) Z)
+S (two S (one (tre S) Z))
+S (suc one S (one (tre S) Z))
+S (S (one S (one (tre S) Z)))
+S (S (S (one (tre S) Z)))
+S (S (S (tre S Z)))
+S (S (S (suc two S Z)))
+S (S (S (S (two S Z))))
+S (S (S (S (suc one S Z))))
+S (S (S (S (S (one S Z)))))
+S (S (S (S (S (S Z)))))
+-}

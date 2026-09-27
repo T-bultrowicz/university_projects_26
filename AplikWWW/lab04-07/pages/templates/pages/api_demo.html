@@ -1,0 +1,26 @@
+{% extends "pages/base.html" %}
+{% block title %}API Demo{% endblock %}
+
+{% block content %}
+<h1>Live Posts</h1>
+<div id="post-list">Loading...</div>
+
+<script>
+async function loadPosts() {
+    const response = await fetch("/api/posts/");
+    const data = await response.json();
+
+    const container = document.getElementById("post-list");
+    container.innerHTML = "";
+
+    for (const post of data.posts) {
+        const article = document.createElement("article");
+        article.innerHTML = `<h2>${post.title}</h2>
+        <p>${post.body.substring(0, 100)}...</p>`;
+        container.appendChild(article);
+    }
+}
+
+loadPosts();
+</script>
+{% endblock %}

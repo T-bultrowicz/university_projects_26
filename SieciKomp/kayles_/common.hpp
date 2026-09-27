@@ -1,0 +1,13 @@
+#ifndef MIM_COMMON_H
+#define MIM_COMMON_H
+
+#include <cstddef>
+#include <cstdint>
+#include <sys/types.h>
+
+struct sockaddr_in get_server_address(char const *host, uint16_t port);
+ssize_t	readn(int fd, void *vptr, size_t n);
+ssize_t	writen(int fd, const void *vptr, size_t n);
+void install_signal_handler(int signal, void (*handler)(int), int flags);
+
+#endif

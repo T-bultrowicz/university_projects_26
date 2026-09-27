@@ -1,0 +1,8 @@
+-- Wyszukiwanie specyficznego drzewa
+-- Jeśli ewaluator "utknie" w złym stanie, nie trafi do czwartej klauzuli
+foo (S (S Z)) A = X
+foo (S Z) B = Y
+foo (S x) C = Z
+foo x y = Fail
+
+main = foo (S (S (S Z))) B

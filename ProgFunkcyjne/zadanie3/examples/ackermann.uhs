@@ -1,0 +1,11 @@
+-- Funkcja Ackermanna - klasyk spowalniający ewaluatory
+-- Oczekiwane dla ack one two (czyli A(1,2)) to S (S (S Z)) (czyli 4, na liczbach Peano S Z = 1)
+-- UWAGA: Może wyssać bardzo dużo "paliwa" (fuel)!
+ack Z n = S n
+ack (S m) Z = ack m (S Z)
+ack (S m) (S n) = ack m (ack (S m) n)
+
+one = S Z
+two = S one
+
+main = ack one two

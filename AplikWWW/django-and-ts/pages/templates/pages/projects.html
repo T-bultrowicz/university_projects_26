@@ -1,0 +1,36 @@
+{% extends "pages/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1> My list of projects! </h1>
+    <form method="GET">
+        <label for="q"> Search through projects! </label>
+        <input type="text" id="q" name="q" value="{{ q }}"> 
+    </form>
+    {% if q != "" %}
+        <p> Showing projects matching phrase: {{ q }}. </p> <br>
+    {% endif %}
+
+    <p> I've currently completed {{ done_count }} projects. </p>
+    <ul>
+        {% for project in projects %}
+        <ul>
+            <li>
+                {{ project.name | lower }}
+            </li>
+            <li>
+                {{ project.year |add:3000 }}
+            </li>
+            <li>
+                {% if project.done %}
+                    ^_^
+                {% else %}
+                    X
+                {% endif %}
+            </li>
+        </ul>
+        <br> <br>
+        {% endfor %}
+    </ul>
+{% endblock %}

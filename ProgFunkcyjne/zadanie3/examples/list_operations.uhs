@@ -1,0 +1,14 @@
+-- data List = Nil | Cons x List
+-- tail
+tl Nil = Nil
+tl (Cons x xs) = xs
+
+-- append (łączenie list)
+append Nil ys = ys
+append (Cons x xs) ys = Cons x (append xs ys)
+
+-- lista [Foo, Bar, Baz]
+listA = Cons Foo (Cons Bar Nil)
+listB = Cons Baz Nil
+
+main = tl (append listA listB)

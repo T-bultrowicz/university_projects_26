@@ -1,0 +1,18 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block title %}Browse Posts{% endblock %}
+
+{% block content %}
+<h1>Browse Posts</h1>
+
+<input type="text" id="search-input" placeholder="Search…" autocomplete="off">
+<select id="sort-select">
+    <option value="date">Date</option>
+    <option value="title">Title</option>
+    <option value="category">Category</option>
+</select>
+<p id="status-bar"></p>
+<div id="post-list"></div>
+
+<script src="{% static 'pages/js/main.js' %}"></script>
+{% endblock %}

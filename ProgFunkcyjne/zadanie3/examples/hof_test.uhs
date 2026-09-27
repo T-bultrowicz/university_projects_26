@@ -1,0 +1,5 @@
+twice f x = f (f x)
+wrap x = Box x
+
+-- wywoła wrap(wrap(wrap(wrap(wrap(wrap(wrap(wrap(Foo))))))))
+main = twice twice twice wrap Foo

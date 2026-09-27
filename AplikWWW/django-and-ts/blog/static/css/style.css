@@ -1,0 +1,220 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #1c6bbb;
+    --text-color: #1f1e1d;
+    --bg-color: #faf9f5;
+    --font-main:     'Segoe UI', system-ui, sans-serif;
+    --spacing-md:    1rem;
+    --spacing-lg:    2rem;
+}
+
+/* Set font-family: var(--font-main) and color: var(--text-color) on body.
+   Add a background: var(--bg-color) and font-size: 16px */
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background: var(--bg-color);
+    font-size: 16px;
+}
+
+/* Style h1, h2, h3” use var(--primary-color) for color,
+   pick sizes, and add a bottom margin using var(--spacing-md) */
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+   }
+/* Give <a> tags color: var(--primary-color) and remove the underline on hover */
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Set a max-width of 900px on body and center it with margin: 0 auto */
+body {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Give <header> a background color, padding: 1rem 2rem,
+   and a bottom border */
+header {
+    background: #ddd;
+     padding: 1rem 2rem; 
+    border-bottom: 2px solid #1a5cb8;
+} 
+
+/* Give <footer> a top border, padding, and center-aligned text */
+footer {
+    border-top: 1px solid #ccc;
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+/* Give <article> a right margin of 2rem */
+article {
+    margin-right: 2rem;
+}
+
+/* Give <aside> a left border, padding-left, and a light background */
+aside {
+    border-left: 3px solid var(--primary-color);
+    padding-left: var(--spacing-md);
+    background: #eef3fb;
+}
+
+/* Style the projects <table>:
+   - border-collapse: collapse on the table
+   - padding: 0.5rem 1rem on th and td
+   - a bottom border on each tr
+   - a different background on thead */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem 1rem;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+thead {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* Flex the flexbox */
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: var(--spacing-md);
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+/*
+Flex items can have the following properties:
+    order - Specifies the display order of the flex items inside the flex container
+    flex-grow - Specifies how much a flex item will grow relative to the rest of the flex items
+    flex-shrink - Specifies how much a flex item will shrink relative to the rest of the flex items
+    flex-basis - Specifies the initial length of a flex item
+    flex - Shorthand property for flex-grow, flex-shrink, and flex-basis
+    align-self - Specifies the alignment for the flex item inside the flex container
+*/
+article {
+    flex: 1;              /* grows to fill all remaining space */
+}
+
+
+aside {
+    flex: 0 0 250px;      /* fixed 250 px, never grows or shrinks */
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;   /* stack article + aside vertically */
+	padding-right: var(--spacing-md);
+    }
+    article {
+	margin-right: 1rem;
+    }
+    aside {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;      /* center links on narrow screens */
+    }
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.06);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+form p {
+    margin-bottom: var(--spacing-md);
+}
+
+.entries {
+    padding: var(--spacing-md) 0;
+}
+
+input, textarea, button {
+    margin: 0.3rem 0.3rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+article p {
+    margin-bottom: var(--spacing-md);
+}
+
+.focused { outline: 2px solid steelblue; outline-offset: 4px; }

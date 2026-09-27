@@ -1,0 +1,17 @@
+{% extends "game/base.html" %}
+{% load static %}
+{% block title %} Play {% endblock %}
+
+{% block content %}
+<h1> {{ maze.name }} </h1>
+
+<div id="timer"></div>
+<div id="penalty-timer"></div>
+<div id="leaderboard"></div>
+<div id="maze-container" data-id="{{ maze.id }}" style="display: flex; justify-content: center;">
+    <canvas id="maze-canvas"></canvas>
+</div>
+<h5 id="errors"></h5>
+
+<script src="{% static 'game/js/play_labirynth.js' %}"></script>
+{% endblock %}

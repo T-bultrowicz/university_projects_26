@@ -1,0 +1,13 @@
+-- nieskończona lista samych Z
+infList = Cons Z infList
+
+hd (Cons x xs) = x
+
+-- Funkcja map na liście
+map f Nil = Nil
+map f (Cons x xs) = Cons (f x) (map f xs)
+
+inc (S x) = S (S x)
+inc Z = S Z
+
+main = hd (map inc infList)

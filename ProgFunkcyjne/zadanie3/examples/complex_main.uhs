@@ -1,0 +1,7 @@
+-- Złożone struktury zagnieżdżonych drzew aplikacji w 'main'
+id x = x
+apply f x = f x
+const x y = x
+compose f g x = f (g x)
+
+main = compose id (const Foo) (apply id Bar)
